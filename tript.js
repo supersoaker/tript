@@ -22,4 +22,4 @@ function T(t, c, r, s, _) {
 	return c && eval( s )
 		|| new Function( 'c', '_', s + 'return _' );
 }
-T.r = function( s ) {	return s; };
+T.r = function( s ) { return s; };

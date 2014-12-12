@@ -10,14 +10,14 @@
 function T(t, c, r, _) {
 	return eval(
 		// set context
-		"with(c||{}){_='';" +
+		"with(c){_='';" +
 			// match html-tags
-		t[r = "replace"](/(<\w+ *.*>)|(<\/\w+>)/g, function(p, a, b) {
+		t[r = "replace"](/(<.*>)/g, function(p, a) {
 			return '_+="'+
-			(a || b)
+				(a)
 				// replace quotes
 				[r](/"/g, '\\"')
 				// inline javascript
-				[r](/{{(.*?)}}/g, '"+($1)+"') +'";'
+				[r](/{{(.*?)}}/g, '"+$1+"') +'";'
 		}) + "}");
 }
