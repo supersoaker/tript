@@ -23,6 +23,7 @@ T._getTmplStr = function(t, r) {
 		return '_+="'+
 		(a || c || d)
 			// replace quotes
+
 			[r](/"/g, '\\"')
 			// inline javascript
 			[r](/{{(.*?)}}/g, function(a,b) {
