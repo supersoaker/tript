@@ -63,7 +63,8 @@ document.body.innerHTML = Tript(template.innerHTML, context);
 
 ###### Code
 ```javascript
-function Tript(t,c,r,_){return eval("with(c||{}){_='';"+t[r="replace"](/(<.*)/g,function(p,a){return'_+="'+a[r](/"/g,'\\"')[r](/{{(.*?)}}/g,'"+($1)+"')+'";'})+"}")}
+function Tript(t,c,r,_){return eval("with(c||{}){_='';"+t[r="replace"](/(<.*)/g,
+function(p,a){return'_+="'+a[r](/"/g,'\\"')[r](/{{(.*?)}}/g,'"+($1)+"')+'";'})+"}")}
 ```
 
 #### Tript.js
@@ -78,7 +79,8 @@ document.body.innerHTML = myNewTemplate(context);
 
 ###### Code
 ```javascript
-function Tript(t,c,r,s,_){return s="with(c||{}){_='';"+t[r="replace"](/(<.*)/g,function(p,a){return'_+="'+a[r](/"/g,'\\"')[r](/{{(.*?)}}/g,'"+Tript.$($1)+"')+'";'})+"}",c&&eval(s)||new Function("c","_",s+"return _")}Tript.$=function(s){return s};
+function Tript(t,c,r,s,_){return s="with(c||{}){_='';"+t[r="replace"](/(<.*)/g,function(p,a){return'_+="'+a[r](/"/g,'\\"')[r]
+(/{{(.*?)}}/g,'"+Tript.$($1)+"')+'";'})+"}",c&&eval(s)||new Function("c","_",s+"return _")}Tript.$=function(s){return s};
 ```
 
 (helpers will follow)
