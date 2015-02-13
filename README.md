@@ -17,29 +17,17 @@ Go check out [this demo](http://codepen.io/misantronic/pen/ogNbBa) at codepen.io
 
 <!-- TEMPLATE -->
 <script id="template" type="text/html">
-	<div id="content">
-		<h1>my awesome {{app}} blog</h1>
-		<div style="font-weight: bold;">{{headline}}</div>
-		<p>{{description}}</p>
+	<div id="posts">
+		for(var i in posts) {
+			<div class="post">
+				var title = posts[i].title,
+					date = posts[i].date,
+					body = posts[i].body;
 
-		<div id="posts">
-
-			for(var i in posts) {
-				<div class="post">
-					var title = posts[i].title,
-						date = posts[i].date,
-						body = posts[i].body;
-
-					<h2>#{{i}}, {{title}} on {{date.format()}}</h2>
-					<p>{{body}}</p>
-
-				</div>
-			}
-
-		</div>
-
-		var fav_animal = "Crow";
-		<p>Your should know: my favorite animal is the <b>{{fav_animal}}</b>.</p>
+				<h2>#{{i}}, {{title}} on {{date.format()}}</h2>
+				<p>{{body}}</p>
+			</div>
+		}
 	</div>
 </script>
 ```
@@ -73,6 +61,11 @@ The minimalistic Script (164 Byte)
 document.body.innerHTML = Tript(template.innerHTML, context);
 ```
 
+###### Code
+```javascript
+function Tript(t,c,r,_){return eval("with(c||{}){_='';"+t[r="replace"](/(<.*)/g,function(p,a){return'_+="'+a[r](/"/g,'\\"')[r](/{{(.*?)}}/g,'"+($1)+"')+'";'})+"}")}
+```
+
 #### Tript.js
 
 the normal Tript script, contains the minimalistic script, helpers and precompilers
@@ -81,6 +74,11 @@ the normal Tript script, contains the minimalistic script, helpers and precompil
 ```javascript
 var myNewTemplate = Tript(template.innerHTML);
 document.body.innerHTML = myNewTemplate(context);
+```
+
+###### Code
+```javascript
+function Tript(t,c,r,s,_){return s="with(c||{}){_='';"+t[r="replace"](/(<.*)/g,function(p,a){return'_+="'+a[r](/"/g,'\\"')[r](/{{(.*?)}}/g,'"+Tript.$($1)+"')+'";'})+"}",c&&eval(s)||new Function("c","_",s+"return _")}Tript.$=function(s){return s};
 ```
 
 (helpers will follow)
