@@ -8,18 +8,17 @@
  * @returns {Function | String}
  * @constructor
  */
-function T(t, c, r, s, _) {
+function Tript(t, c, r, s, _) {
 	s = "with(c||{}){_='';" +
 	// match html-tags
-	t[r = "replace"](/(<\w.*>)|(<\/\w+>)/g, function(p, a, b) {
-		return '_+="'+
-			(a || b)
-				// replace quotes
-				[r](/"/g, '\\"')
-				// inline javascript
-				[r](/{{(.*?)}}/g, '"+T.r($1)+"') +'";'
+	t[r = "replace"](/(<.*)/g, function(p, a) {
+		return '_+="'+ a
+			// replace quotes
+			[r](/"/g, '\\"')
+			// inline javascript
+			[r](/{{(.*?)}}/g, '"+Tript.$($1)+"') +'";'
 	}) + "}";
 	return c && eval( s )
 		|| new Function( 'c', '_', s + 'return _' );
 }
-T.r = function( s ) { return s; };
+Tript.$ = function( s ) { return s; };
