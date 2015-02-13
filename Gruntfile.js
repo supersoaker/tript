@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 			main: {
 				files: {
 					'tript.min.js'	: ['tript.js'],
-					'miniTript.min.js'	: ['miniTript.js']
+					'minTript.min.js'	: ['minTript.js']
 				}
 			}
 		}
